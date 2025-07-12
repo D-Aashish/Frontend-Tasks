@@ -1,8 +1,11 @@
 import TestimonialImage from './testimonialimage.jsx';
 
-export default function testimonial() {
+export default function Testimonial() {
   return (
-     <div className="bg-white p-8 rounded-lg shadow-lg space-y-8">
+    <div className="bg-white w-[90vw] h-[90vh] relative overflow-hidden flex justify-center items-center">
+
+      <div className="mainText text-center">
+
       <h3 className="text-2xl font-bold text-center text-gray-800">
         Hear How They Level Up Their Game!
       </h3>
@@ -14,20 +17,44 @@ export default function testimonial() {
           View all Testimonials
         </button>
       </div>
-      <div className="flex justify-center gap-4 flex-wrap">
-        {/* Testimonials */}
-        <TestimonialImage imageName="image 20.png" altText="Testimonial 1" />
-        {/* <TestimonialImage imageName="text.png" altText="Testimonial 1" /> */}
+
+      </div>
+      
+
+      <div className="absolute" style={{top: '300px', right: '65%'}}>
+        <TestimonialImage imageName="image-1.png" altText="Thumbs up icon" />
+      </div>
+      <div className="absolute" style={{top: '170px', right: '60%'}}>
+        <TestimonialImage imageName="testimonial.png" altText="Testimonial 9" />
+      </div>
+      <div className="absolute" style={{top: '170px', left: '44%'}}>
+        <TestimonialImage imageName="image 22.png" altText="Chat icon" />
+      </div>
+      <div className="absolute" style={{top: '170px', left: '55%'}}>
+        <TestimonialImage imageName="image.png" altText="Testimonial 8" />
+      </div>
+      <div className="absolute" style={{top: '300px', right: '30%'}}>
         <TestimonialImage imageName="image 21.png" altText="Testimonial 2" />
-        <TestimonialImage imageName="image 22.png" altText="Testimonial 3" />
+      </div>
+      <div className="absolute" style={{bottom: '140px', right: '35%'}}>
+        <TestimonialImage imageName="image 27.png" altText="Heart icon" />
+      </div>
+      <div className="absolute" style={{bottom: '140px', left: '53%', transform: 'translateX(-50%)'}}>
+        <TestimonialImage imageName="Property 1=Default.png" altText="Trophy" />
+      </div>
+      <div className="absolute" style={{bottom: '140px', left: '560px'}}>
         <TestimonialImage imageName="image 24.png" altText="Testimonial 4" />
-        <TestimonialImage imageName="image 25.png" altText="Testimonial 1" />
-        <TestimonialImage imageName="image 27.png" altText="Testimonial 2" />
-        <TestimonialImage imageName="image-1.png" altText="Testimonial 3" />
-        <TestimonialImage imageName="image.png" altText="Testimonial 4" />
-        <TestimonialImage imageName="testimonial.png" altText="Testimonial 4" />
-        <TestimonialImage imageName="Property 1=Default.png" altText="Testimonial 4" />
-</div>
+      </div>
+      <div className="absolute" style={{bottom: '140px', left: '450px'}}>
+        <TestimonialImage imageName="image 20.png" altText="Testimonial 1" />
+      </div>
+  
+      <div className="absolute" style={{bottom: '140px', left: '340px'}}>
+        <TestimonialImage imageName="image 25.png" altText="Testimonial 5" />
+      </div>
+
+      
+
     </div>
   );
 }
