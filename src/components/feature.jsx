@@ -53,35 +53,30 @@ export default function FeatureGrid() {
         </h1>
       </div>
       <div className="grid grid-cols-2 gap-10 w-full max-w-6xl">
-        {features.map((feature, idx) => (
-          <div
-            key={idx}
-            className={`${feature.bg} relative rounded-[48px] border-8 border-white shadow-2xl p-12 min-h-[300px] flex flex-row ${idx % 2 === 1 ? 'flex-row-reverse' : ''} items-center overflow-visible`}
-          >
-            {/* Illustration - absolutely positioned, bottom for bottom row */}
-            {idx < 2 ? (
-              <img
-                src={feature.image}
-                alt={feature.title}
-                className={`w-40 h-40 object-contain absolute top-1/2 -translate-y-1/2 ${idx % 2 === 1 ? 'right-[-40px]' : 'left-[-40px]'}`}
-                style={{ zIndex: 2 }}
-              />
-            ) : (
-              <img
-                src={feature.image}
-                alt={feature.title}
-                className={`w-48 h-48 object-contain absolute bottom-0 ${idx % 2 === 1 ? 'right-0' : 'left-0'} translate-y-1/3`}
-                style={{ zIndex: 2 }}
-              />
-            )}
-            {/* Text content */}
-            <div className={`flex-1 flex flex-col justify-center z-10 px-8 ${idx % 2 === 1 ? 'items-end text-right' : 'items-start text-left'} max-w-lg`}>
-              <h2 className="text-white text-5xl font-extrabold font-sans leading-tight mb-3">{feature.title}</h2>
-              <h3 className="text-white text-2xl font-bold font-sans leading-snug mb-5">{feature.subtitle}</h3>
-              <p className="text-white text-lg font-sans leading-relaxed">{feature.description}</p>
-            </div>
-          </div>
-        ))}
+{features.map((feature, idx) => (
+  <div
+    key={idx}
+    className={`${feature.bg} relative rounded-[48px] border-8 border-white shadow-2xl p-12 min-h-[350px] flex flex-col items-center justify-center text-center overflow-visible`}
+  >
+    {/* Image */}
+    <img
+      src={feature.image}
+      alt={feature.title}
+      className={`w-40 h-40 object-contain absolute ${
+        idx < 2 ? 'top-0 -translate-y-1/3' : 'bottom-0 translate-y-1/3'
+      } ${idx % 2 === 1 ? 'right-0' : 'left-0'}`}
+      style={{ zIndex: 2 }}
+    />
+
+    {/* Text Content */}
+    <div className="z-10 max-w-md">
+      <h2 className="text-white text-3xl md:text-4xl font-extrabold mb-2 leading-tight">{feature.title}</h2>
+      <h3 className="text-white text-xl md:text-2xl font-semibold mb-4 leading-snug">{feature.subtitle}</h3>
+      <p className="text-white text-base md:text-lg leading-relaxed">{feature.description}</p>
+    </div>
+  </div>
+))}
+
       </div>
     </div>
   );
