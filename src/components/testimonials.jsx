@@ -30,19 +30,23 @@ const testimonialImagesHovered = [
 export default function Testimonial() {
   const [isHovered, setIsHovered] = useState(false);
 
-  // Function to render all images dynamically
   const renderTestimonialImages = () => {
-    const t_images = isHovered ? testimonialImagesHovered : testimonialImages;
-    return t_images.map((image, index) => {
+    return testimonialImages.map((image, index) => {
+      const defaultPosition = image.position;
+      const hoverPosition = testimonialImagesHovered[index].position;
+      const positionStyle = isHovered ? hoverPosition : defaultPosition;
+
       return (
         <div
           key={index}
-          className="absolute"
-          style={image.position} // Apply the position dynamically from the array
+          className="absolute transition-all duration-700 ease-in-out"
+          style={{
+            ...positionStyle
+          }}
         >
           <TestimonialImage
-            imageName={image.imageName} // Use the actual image name
-            altText={image.altText} // Use the alt text dynamically
+            imageName={image.imageName}
+            altText={image.altText}
           />
         </div>
       );
@@ -52,15 +56,14 @@ export default function Testimonial() {
   return (
     <div
       className="bg-white w-[90vw] h-[90vh] relative overflow-hidden flex justify-center items-center"
-      onMouseEnter={() => setIsHovered(true)}  // Handle mouse enter event
-      onMouseLeave={() => setIsHovered(false)} // Handle mouse leave event
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      
+      {/* Center image */}
       <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex justify-center items-center">
         <TestimonialImage imageName="text.png" altText="Testimonial 9" />
       </div>
 
-      {/* Render all the testimonial images */}
       {renderTestimonialImages()}
     </div>
   );
