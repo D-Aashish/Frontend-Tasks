@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import TestimonialImage from './testimonialimage.jsx';
 
 const testimonialImages = [
@@ -6,51 +7,61 @@ const testimonialImages = [
   { imageName: "image 22.png", altText: "Chat icon", position: { top: '24%', left: '41%' } },
   { imageName: "image-1.png", altText: "Testimonial 3", position: { top: '45%', left: '24%' } },
   { imageName: "image 21.png", altText: "Heart icon", position: { top: '38%', left: '65%' } },
-  { imageName: "image 25.png", altText: "Testimonial 4", position: { bottom: '  25%', left: '25%' } },
+  { imageName: "image 25.png", altText: "Testimonial 4", position: { bottom: '25%', left: '25%' } },
   { imageName: "image 20.png", altText: "Testimonial 5", position: { bottom: '25%', left: '34%' } },
   { imageName: "image 24.png", altText: "Testimonial 6", position: { bottom: '25%', left: '44%' } },
   { imageName: "Property 1=Default.png", altText: "Trophy", position: { bottom: '25%', left: '56%', transform: 'translateX(-50%)' } },
   { imageName: "image 27.png", altText: "Thumbs up icon", position: { bottom: '30%', left: '61%' } }
 ];
-// const testimonialImages = [
-//   { imageName: "testimonial.png", altText: "Testimonial 1", position: { top: '15%', left: '28%' } },
-//   { imageName: "image.png", altText: "Testimonial 2", position: { top: '15%', left: '65%' } },
-//   { imageName: "image 22.png", altText: "Chat icon", position: { top: '8%', left: '45%' } },
-//   { imageName: "image-1.png", altText: "Testimonial 3", position: { top: '38%', left: '12%' } },
-//   { imageName: "image 21.png", altText: "Heart icon", position: { top: '38%', left: '80%' } },
-//   { imageName: "image 25.png", altText: "Testimonial 4", position: { bottom: '25%', left: '20%' } },
-//   { imageName: "image 20.png", altText: "Testimonial 5", position: { bottom: '8%', left: '32%' } },
-//   { imageName: "image 24.png", altText: "Testimonial 6", position: { bottom: '5%', left: '45%' } },
-//   { imageName: "Property 1=Default.png", altText: "Trophy", position: { bottom: '8%', left: '62%', transform: 'translateX(-50%)' } },
-//   { imageName: "image 27.png", altText: "Thumbs up icon", position: { bottom: '25%', left: '70%' } }
-// ];
+
+const testimonialImagesHovered = [
+  { imageName: "testimonial.png", altText: "Testimonial 1", position: { top: '15%', left: '28%' } },
+  { imageName: "image.png", altText: "Testimonial 2", position: { top: '15%', left: '65%' } },
+  { imageName: "image 22.png", altText: "Chat icon", position: { top: '8%', left: '45%' } },
+  { imageName: "image-1.png", altText: "Testimonial 3", position: { top: '38%', left: '12%' } },
+  { imageName: "image 21.png", altText: "Heart icon", position: { top: '38%', left: '80%' } },
+  { imageName: "image 25.png", altText: "Testimonial 4", position: { bottom: '25%', left: '20%' } },
+  { imageName: "image 20.png", altText: "Testimonial 5", position: { bottom: '8%', left: '32%' } },
+  { imageName: "image 24.png", altText: "Testimonial 6", position: { bottom: '5%', left: '45%' } },
+  { imageName: "Property 1=Default.png", altText: "Trophy", position: { bottom: '8%', left: '62%', transform: 'translateX(-50%)' } },
+  { imageName: "image 27.png", altText: "Thumbs up icon", position: { bottom: '25%', left: '70%' } }
+];
 
 export default function Testimonial() {
+  const [isHovered, setIsHovered] = useState(false);
+
   // Function to render all images dynamically
   const renderTestimonialImages = () => {
-    return testimonialImages.map((image, index) => (
-      <div
-        key={index}
-        className="absolute"
-        style={image.position} // Apply the position dynamically from the array
-      >
-        <TestimonialImage
-          imageName={image.imageName} // Use the actual image name
-          altText={image.altText} // Use the alt text dynamically
-        />
-      </div>
-    ));
+    const t_images = isHovered ? testimonialImagesHovered : testimonialImages;
+    return t_images.map((image, index) => {
+      return (
+        <div
+          key={index}
+          className="absolute"
+          style={image.position} // Apply the position dynamically from the array
+        >
+          <TestimonialImage
+            imageName={image.imageName} // Use the actual image name
+            altText={image.altText} // Use the alt text dynamically
+          />
+        </div>
+      );
+    });
   };
 
   return (
-    <div className="bg-white w-[90vw] h-[90vh] relative overflow-hidden flex justify-center items-center">
+    <div
+      className="bg-white w-[90vw] h-[90vh] relative overflow-hidden flex justify-center items-center"
+      onMouseEnter={() => setIsHovered(true)}  // Handle mouse enter event
+      onMouseLeave={() => setIsHovered(false)} // Handle mouse leave event
+    >
       
-      {/* Centered image instead of text */}
       <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex justify-center items-center">
         <TestimonialImage imageName="text.png" altText="Testimonial 9" />
       </div>
-      {renderTestimonialImages()}
 
+      {/* Render all the testimonial images */}
+      {renderTestimonialImages()}
     </div>
   );
 }
