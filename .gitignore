@@ -15,6 +15,9 @@ dist-ssr
 
 .env*
 
+/src/components/testimonialhover.jsx
+
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

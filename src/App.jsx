@@ -1,9 +1,10 @@
 import './App.css'
+import Testimonial from './components/testimonials.jsx'
 
 function App() {
   return (
     <>
-    {/* <p>this is a text</p> */}
+      <Testimonial />
     </>
   )
 }

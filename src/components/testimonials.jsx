@@ -1,59 +1,55 @@
 import TestimonialImage from './testimonialimage.jsx';
 
+const testimonialImages = [
+  { imageName: "testimonial.png", altText: "Testimonial 1", position: { top: '24%', left: '32%' } },
+  { imageName: "image.png", altText: "Testimonial 2", position: { top: '24%', left: '50%' } },
+  { imageName: "image 22.png", altText: "Chat icon", position: { top: '24%', left: '41%' } },
+  { imageName: "image-1.png", altText: "Testimonial 3", position: { top: '45%', left: '24%' } },
+  { imageName: "image 21.png", altText: "Heart icon", position: { top: '38%', left: '65%' } },
+  { imageName: "image 25.png", altText: "Testimonial 4", position: { bottom: '  25%', left: '25%' } },
+  { imageName: "image 20.png", altText: "Testimonial 5", position: { bottom: '25%', left: '34%' } },
+  { imageName: "image 24.png", altText: "Testimonial 6", position: { bottom: '25%', left: '44%' } },
+  { imageName: "Property 1=Default.png", altText: "Trophy", position: { bottom: '25%', left: '56%', transform: 'translateX(-50%)' } },
+  { imageName: "image 27.png", altText: "Thumbs up icon", position: { bottom: '30%', left: '61%' } }
+];
+// const testimonialImages = [
+//   { imageName: "testimonial.png", altText: "Testimonial 1", position: { top: '15%', left: '28%' } },
+//   { imageName: "image.png", altText: "Testimonial 2", position: { top: '15%', left: '65%' } },
+//   { imageName: "image 22.png", altText: "Chat icon", position: { top: '8%', left: '45%' } },
+//   { imageName: "image-1.png", altText: "Testimonial 3", position: { top: '38%', left: '12%' } },
+//   { imageName: "image 21.png", altText: "Heart icon", position: { top: '38%', left: '80%' } },
+//   { imageName: "image 25.png", altText: "Testimonial 4", position: { bottom: '25%', left: '20%' } },
+//   { imageName: "image 20.png", altText: "Testimonial 5", position: { bottom: '8%', left: '32%' } },
+//   { imageName: "image 24.png", altText: "Testimonial 6", position: { bottom: '5%', left: '45%' } },
+//   { imageName: "Property 1=Default.png", altText: "Trophy", position: { bottom: '8%', left: '62%', transform: 'translateX(-50%)' } },
+//   { imageName: "image 27.png", altText: "Thumbs up icon", position: { bottom: '25%', left: '70%' } }
+// ];
+
 export default function Testimonial() {
+  // Function to render all images dynamically
+  const renderTestimonialImages = () => {
+    return testimonialImages.map((image, index) => (
+      <div
+        key={index}
+        className="absolute"
+        style={image.position} // Apply the position dynamically from the array
+      >
+        <TestimonialImage
+          imageName={image.imageName} // Use the actual image name
+          altText={image.altText} // Use the alt text dynamically
+        />
+      </div>
+    ));
+  };
+
   return (
     <div className="bg-white w-[90vw] h-[90vh] relative overflow-hidden flex justify-center items-center">
-
-      <div className="mainText text-center">
-
-      <h3 className="text-2xl font-bold text-center text-gray-800">
-        Hear How They Level Up Their Game!
-      </h3>
-      <h3 className="text-3xl font-bold text-center text-black">
-        Skill <span className="text-[#1DA077]">Masters</span> Unite! 🤝
-      </h3>
-      <div className="flex justify-center">
-        <button className="text-black px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">
-          View all Testimonials
-        </button>
-      </div>
-
-      </div>
       
-
-      <div className="absolute" style={{top: '300px', right: '65%'}}>
-        <TestimonialImage imageName="image-1.png" altText="Thumbs up icon" />
+      {/* Centered image instead of text */}
+      <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex justify-center items-center">
+        <TestimonialImage imageName="text.png" altText="Testimonial 9" />
       </div>
-      <div className="absolute" style={{top: '170px', right: '60%'}}>
-        <TestimonialImage imageName="testimonial.png" altText="Testimonial 9" />
-      </div>
-      <div className="absolute" style={{top: '170px', left: '44%'}}>
-        <TestimonialImage imageName="image 22.png" altText="Chat icon" />
-      </div>
-      <div className="absolute" style={{top: '170px', left: '55%'}}>
-        <TestimonialImage imageName="image.png" altText="Testimonial 8" />
-      </div>
-      <div className="absolute" style={{top: '300px', right: '30%'}}>
-        <TestimonialImage imageName="image 21.png" altText="Testimonial 2" />
-      </div>
-      <div className="absolute" style={{bottom: '140px', right: '35%'}}>
-        <TestimonialImage imageName="image 27.png" altText="Heart icon" />
-      </div>
-      <div className="absolute" style={{bottom: '140px', left: '53%', transform: 'translateX(-50%)'}}>
-        <TestimonialImage imageName="Property 1=Default.png" altText="Trophy" />
-      </div>
-      <div className="absolute" style={{bottom: '140px', left: '560px'}}>
-        <TestimonialImage imageName="image 24.png" altText="Testimonial 4" />
-      </div>
-      <div className="absolute" style={{bottom: '140px', left: '450px'}}>
-        <TestimonialImage imageName="image 20.png" altText="Testimonial 1" />
-      </div>
-  
-      <div className="absolute" style={{bottom: '140px', left: '340px'}}>
-        <TestimonialImage imageName="image 25.png" altText="Testimonial 5" />
-      </div>
-
-      
+      {renderTestimonialImages()}
 
     </div>
   );
